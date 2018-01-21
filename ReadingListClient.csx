@@ -8,13 +8,13 @@ using Newtonsoft.Json;
 using System.Linq; 
 using System.Threading.Tasks;
 
-private string readingListUrl = @"https://my.readinglist.net/reading/api/"; 
+private string readingListUrl = @"https://app.amosti.net/reading/api/"; 
 
 await PrintReadingListAsync(readingListUrl, await GetReadingListTypeFromArgsAsync(Args, readingListUrl)); 
 
 private async Task<string> GetReadingListTypeFromArgsAsync(IList<string> args, string url)
 {
-    if(string.IsNullOrEmpty(args.First()))
+    if(string.IsNullOrEmpty(args.FirstOrDefault())) 
     {
         throw new ArgumentNullException("Arguments can't be empty, choose a readinglist type.");
     }
